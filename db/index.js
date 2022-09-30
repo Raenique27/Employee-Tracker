@@ -43,8 +43,18 @@ class employeeDataBase {
         );
     }
 
-    
+    // Show all departments
+    showAllDepartments() {
+        return this.db.promise().query(
+            "SELECT * FROM department;"
+        );
+    }
 
-
+    // Add department
+    createDepartment(name) {
+        return this.db.promise().query(
+            "INSERT INTO department (name) VALUES (?);", name
+        );
+    }
 
 }
