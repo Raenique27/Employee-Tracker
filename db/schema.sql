@@ -1,6 +1,7 @@
-DROP TABLE IF EXISTS department;
-DROP TABLE IF EXISTS role;
-DROP TABLE IF EXISTS employee;
+SET FOREIGN_KEY_CHECKS=0; DROP TABLE IF EXISTS department; SET FOREIGN_KEY_CHECKS=1;
+SET FOREIGN_KEY_CHECKS=0; DROP TABLE IF EXISTS role; SET FOREIGN_KEY_CHECKS=1;
+SET FOREIGN_KEY_CHECKS=0; DROP TABLE IF EXISTS employee; SET FOREIGN_KEY_CHECKS=1;
+
 
 -- Table that holds department id and name 
 CREATE TABLE department (
@@ -14,7 +15,7 @@ CREATE TABLE role (
     title VARCHAR(30) NOT NULL,
     salary DECIMAL NOT NULL,
     department_id INTEGER,
-    CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES department(id)
+    CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES department(id) 
 );
 
 -- Table that holds employees
@@ -25,5 +26,5 @@ CREATE TABLE employee (
     role_id INTEGER,
     manager_id INTEGER,
     CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES role(id),
-    CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES employee(id)
+    CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES employee(id) 
 );

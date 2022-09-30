@@ -31,7 +31,7 @@ class employeeDataBase {
     // Show all roles
     showAllRoles() {
         return this.db.promise().query(
-            "SELECT role.id, role.title, role.salary, department.name, role.department_id FROM role LEFT JOIN department ON role.department_id = department.id;"
+            "SELECT role.id, role.title, department.name AS department, role.salary FROM role LEFT JOIN department ON role.department_id = department.id;"
         );
     }
 
@@ -58,3 +58,5 @@ class employeeDataBase {
     }
 
 }
+
+module.exports = new employeeDataBase(db);
