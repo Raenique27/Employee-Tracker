@@ -35,6 +35,16 @@ class employeeDataBase {
         );
     }
 
+    // Add a new role
+    createRole(title, salary, department_id) {
+        return this.db.promise().query(
+            "INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?);",
+            [title,salary,department_id]
+        );
+    }
+
+    
+
 
 
 }
