@@ -12,12 +12,21 @@ class employeeDataBase {
         );
     }
 
-     // Add an employee
-     createEmployee(firstName, lastName, role, manager) {
+    // Add an employee
+    createEmployee(firstName, lastName, role, manager) {
         return this.db.promise().query(
             "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?);",
             [firstName, lastName, role, manager]
         );
     }
+
+    // Update employee role
+    updateEmployeeRole(roleId, employeeId) {
+        return this.db.promise().query(
+            "UPDATE employee SET role_id = ? WHERE id = ?",
+            [roleId, employeeId]
+        );
+    }
+
 
 }
