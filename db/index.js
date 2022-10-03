@@ -13,10 +13,9 @@ class employeeDataBase {
     }
 
     // Add an employee
-    createEmployee(firstName, lastName, role, manager) {
+    createEmployee(employee) {
         return this.db.promise().query(
-            "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?);",
-            [firstName, lastName, role, manager]
+            "INSERT INTO employee SET ?",employee
         );
     }
 
@@ -36,10 +35,9 @@ class employeeDataBase {
     }
 
     // Add a new role
-    createRole(title, salary, department_id) {
+    createRole(role) {
         return this.db.promise().query(
-            "INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?);",
-            [title,salary,department_id]
+            "INSERT INTO role SET ?", role
         );
     }
 
@@ -51,9 +49,9 @@ class employeeDataBase {
     }
 
     // Add department
-    createDepartment(name) {
+    createDepartment(department) {
         return this.db.promise().query(
-            "INSERT INTO department (name) VALUES (?);", name
+            "INSERT INTO department SET ?", department
         );
     }
 
