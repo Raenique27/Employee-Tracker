@@ -58,7 +58,7 @@ function startPrompt() {
                 viewAllDepartments();
                 break;
             case "VIEW_ROLES":
-                viewAllDepartments();
+                viewAllRoles();
                 break;
             case "VIEW_EMPLOYEES":
                 viewAllEmployees();
@@ -88,6 +88,17 @@ function viewAllEmployees() {
             let employees = rows;
             console.log("\n");
             console.table(employees);
+        })
+        .then(() => startPrompt());
+}
+
+// Show all roles
+function viewAllRoles() {
+    db.showAllRoles()
+        .then(([rows]) => {
+            let roles = rows;
+            console.log("\n");
+            console.table(roles);
         })
         .then(() => startPrompt());
 }
