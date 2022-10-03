@@ -1,6 +1,7 @@
 const {prompt} = require('inquirer');
 const db = require('./db');
 const consoleTable = require('console.table');
+const { createDepartment, createRole, createEmployee, updateEmployeeRole, showAllDepartments, showAllEmployees } = require('./db');
 
 function initlize() {
     startPrompt();
@@ -48,5 +49,34 @@ function startPrompt() {
                 }
             ]
         }
-    ])
+    ]).then(res => {
+        let choice = res.choice;
+
+        // Call function based on what the user selects
+        switch (choice) {
+            case "VIEW_DEPARTMENT":
+                showAllDepartments();
+                break;
+            case "VIEW_ROLES":
+                showAllDepartments();
+                break;
+            case "VIEW_EMPLOYEES":
+                showAllEmployees();
+                break;
+            case "ADD_DEPARTMENT":
+                createDepartment();
+                break;
+            case "ADD_ROLE":
+                createRole();
+                break;
+            case "ADD_EMPLOYEE":
+                createEmployee();
+                break;
+            case "UPDATE_EMPLOYEE_ROLE":
+                updateEmployeeRole();
+                break;
+            default:
+                quit();
+        }
+    })
 }
