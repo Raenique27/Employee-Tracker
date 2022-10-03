@@ -55,13 +55,13 @@ function startPrompt() {
         // Call function based on what the user selects
         switch (choice) {
             case "VIEW_DEPARTMENT":
-                showAllDepartments();
+                viewAllDepartments();
                 break;
             case "VIEW_ROLES":
-                showAllDepartments();
+                viewAllDepartments();
                 break;
             case "VIEW_EMPLOYEES":
-                showAllEmployees();
+                viewAllEmployees();
                 break;
             case "ADD_DEPARTMENT":
                 createDepartment();
@@ -79,4 +79,15 @@ function startPrompt() {
                 quit();
         }
     })
+}
+
+// Show all Employees
+function viewAllEmployees() {
+    db.showAllEmployees()
+        .then (([rows]) => {
+            let employees = rows;
+            console.log("\n");
+            console.table(employees);
+        })
+        .then(() => startPrompt());
 }
